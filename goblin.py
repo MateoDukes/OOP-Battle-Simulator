@@ -1,16 +1,13 @@
 import random
+from enemy import Enemy
 
-class Goblin:
+class Goblin(Enemy):
+
     def __init__(self, name):
-        self.name = name
-        self.health = 100
-        self.attack_power = 15
+        super().__init__(name, 100, 7)
+        self.gold = 0
 
-    def attack(self):
-        return random.randint(1, self.attack_power)
-
-    def take_damage(self, damage):
-        self.health = max(0, self.health - damage)
-
-    def is_alive(self):
-        return self.health > 0
+    def stealGold(self, hero):
+        print("Give me the Bread!")
+        self.gold = self.gold + hero.gold
+        hero.gold = 0
